@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Renta de Casas Vacacionales – Dreams Esparza</title>
+  <meta name="description" content="Casas vacacionales en Acapulco: disponibilidad, fotos, precios y contacto por WhatsApp." />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand:#0d6efd;
+    }
+    body{font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
+    .navbar-brand strong{letter-spacing:.2px}
+    .hero{background: linear-gradient(180deg, rgba(13,110,253,.08), rgba(13,110,253,.02));}
+    .badge-pill{border-radius: 50rem;}
+    .property-card img{object-fit: cover; height: 230px;}
+    .shadow-soft{box-shadow: 0 10px 20px rgba(0,0,0,.06);}    
+    .floating-whatsapp{position: fixed; right: 18px; bottom: 18px; z-index: 1030;}
+    .amenities .badge{margin: 2px}
+    .footer-link{color:#adb5bd; text-decoration:none}
+    .footer-link:hover{color:white;}
+    .filter-bar .form-select, .filter-bar .form-control{min-width: 160px;}
+    .cursor-pointer{cursor:pointer}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR Bootstrap -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#inicio">
+        <img src="./logo.png" alt="home" width="28" class="me-2">
+        <strong>Dreams Esparza</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#propiedades">Propiedades</a></li>
+          <li class="nav-item"><a class="nav-link" href="#preguntas">Preguntas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-primary" href="#contacto">Cotizar</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero py-5">
+    <div class="container py-3">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold">Casas vacacionales en <span class="text-primary">Acapulco</span></h1>
+          <p class="lead text-secondary">Hospédate en la mejor zona de Acapulco ¡al mejor precio!</p>
+          <div class="d-flex gap-2">
+            <a href="#propiedades" class="btn btn-primary btn-lg">Ver propiedades</a>
+            <a href="#contacto" class="btn btn-outline-primary btn-lg">Pedir cotización</a>
+          </div>
+          <div class="mt-4 text-secondary small">Facturamos | Estancias largas | Pet‑friendly en opciones seleccionadas</div>
+        </div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-soft">
+            <!-- TIP: Reemplaza el src con un video o imagen propia -->
+           <video controls autoplay muted loop class="w-100 rounded-4 shadow-soft">
+  <source src="./rotonda_videoo2.mp4" type="video/mp4">
+  Tu navegador no soporta video en HTML5.
+</video>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section class="py-3 border-bottom">
+    <div class="container">
+      <div class="filter-bar d-flex flex-wrap gap-2 align-items-center">
+        <div class="input-group" style="max-width: 340px;">
+          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+          <input id="q" type="search" class="form-control" placeholder="Buscar por colonia, nombre o código...">
+        </div>
+        <select id="selZona" class="form-select">
+          <option value="">Zona (todas)</option>
+          <option>Diamante</option>
+          <option>Dorada</option>
+          <option>Tradicional</option>
+        </select>
+        <select id="selHuespedes" class="form-select">
+          <option value="">Huéspedes</option>
+          <option value="6">Hasta 6</option>
+          <option value="8">Hasta 8</option>
+          <option value="10">Hasta 10</option>
+          <option value="12">Hasta 12</option>
+          <option value="16">16 o más</option>
+        </select>
+        <select id="selPrecio" class="form-select">
+          <option value="">Precio por noche</option>
+          <option value="2500">Hasta $2,500</option>
+          <option value="4000">$2,500–$4,000</option>
+          <option value="8000">$4,000–$8,000</option>
+          <option value="8001">$8,000+</option>
+        </select>
+        <button class="btn btn-outline-secondary ms-auto" id="btnLimpiar">Limpiar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE PROPIEDADES -->
+  <section id="propiedades" class="py-5">
+    <div class="container">
+      <div class="d-flex align-items-end justify-content-between mb-3">
+        <h2 class="mb-0">Propiedades destacadas</h2>
+        <div class="text-secondary small">*Precios orientativos, confirma por WhatsApp.</div>
+      </div>
+      <div id="grid" class="row g-4">
+        <!-- ====== TARJETA 1 ====== -->
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./rotondaMain.jpg" class="card-img-top" alt="Villas Venado">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Zona Dorada</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-101</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Villas Venado / Rotonda</h5>
+      <p class="card-text text-secondary mb-2">10 recámaras · Hasta 50 huéspedes · Alberca privada 24 hrs</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+        <span class="badge rounded-pill text-bg-light">Pet-friendly</span>
+        <span class="badge rounded-pill text-bg-light">Estacionamiento</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $10,500 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Playa a 5 min de Costera, Atras del Vlub de Golf</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-101">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/message/GZDKGYJXHQZED1" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== TARJETA 2 ====== -->
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./misterioMain.jpg" class="card-img-top" alt="Villas Misterio">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Zona Dorada</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-202</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Villas Misterio</h5>
+      <p class="card-text text-secondary mb-2">4 recámaras · 20 - 25 huéspedes · Vista al mar · Alberca 24 horas</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+        <span class="badge rounded-pill text-bg-light">Estacionamiento</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $5,500 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">5 min de Costera Miguel Alemán</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-202">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/message/GZDKGYJXHQZED1" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== TARJETA 3 ====== -->
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./villasRosaMain.jpg" class="card-img-top" alt="Villas La Rosa">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Zona Dorada</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-303</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Villas La Rosa</h5>
+      <p class="card-text text-secondary mb-2">5 recámaras · 20-25 huéspedes · Cerca de Costera</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+        <span class="badge rounded-pill text-bg-light">Cocina equipada</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $5,500 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Condesa</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-303">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/message/GZDKGYJXHQZED13" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== TARJETA 4 ====== -->
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./villasRocaLounge.jpg" class="card-img-top" alt="Casa Sol">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Zona Doraada</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-404</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Villas Roca Lounge</h5>
+      <p class="card-text text-secondary mb-2">10 recámaras · 50 huéspedes · Alberca privada</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $10,500 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Condesa</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-404">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/message/GZDKGYJXHQZED1" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== TARJETA 5 ====== -->
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./tabaresMain.jpg" class="card-img-top" alt="Casa Luna">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Zona Dorada</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-505</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Villas Tabares</h5>
+      <p class="card-text text-secondary mb-2">3 recámaras · 8 huéspedes · Vista al mar</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $10,500 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Diamante</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-505">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/message/GZDKGYJXHQZED1" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== TARJETA 6 ====== -->
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./villlasLaEsquinita.jpg" class="card-img-top" alt="Villa Coral">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Zona Dorada</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-606</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Villas La Esquinita</h5>
+      <p class="card-text text-secondary mb-2">6 recámaras · 18 huéspedes · Alberca y terraza</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+        <span class="badge rounded-pill text-bg-light">Estacionamiento</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $7,500 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Condesa</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-606">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/message/GZDKGYJXHQZED16" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== TARJETA 7 ====== 
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./Assets/casaArena.jpg" class="card-img-top" alt="Casa Arena">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Tradicional</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-707</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Casa Arena</h5>
+      <p class="card-text text-secondary mb-2">2 recámaras · 6 huéspedes · Cerca del centro</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">Cocina equipada</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $2,000 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Centro</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-707">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/5217440000000?text=Hola%20me%20interesa%20la%20AC-707" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<!-- ====== TARJETA 8 ====== 
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./Assets/casaPerla.jpg" class="card-img-top" alt="Casa Perla">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Diamante</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-808</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Casa Perla</h5>
+      <p class="card-text text-secondary mb-2">5 recámaras · 14 huéspedes · Alberca y jardín</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $6,800 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Zona Diamante</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-808">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/5217440000000?text=Hola%20me%20interesa%20la%20AC-808" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<!-- ====== TARJETA 9 ====== 
+<div class="col-sm-6 col-lg-4">
+  <div class="card property-card h-100 shadow-soft">
+    <div class="position-relative">
+      <img src="./Assets/villaOasis.jpg" class="card-img-top" alt="Villa Oasis">
+      <span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Dorada</span>
+      <span class="badge text-bg-light position-absolute top-0 end-0 m-2">ID: AC-909</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Villa Oasis</h5>
+      <p class="card-text text-secondary mb-2">7 recámaras · 20 huéspedes · Frente al mar</p>
+      <div class="amenities mb-2">
+        <span class="badge rounded-pill text-bg-light">Wi-Fi</span>
+        <span class="badge rounded-pill text-bg-light">A/A</span>
+        <span class="badge rounded-pill text-bg-light">Pet-friendly</span>
+      </div>
+      <div class="mt-auto d-flex align-items-center justify-content-between">
+        <div>
+          <div class="fw-semibold">Desde $9,500 <small class="text-secondary">/ noche</small></div>
+          <div class="small text-secondary">Costera Miguel Alemán</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#m-909">Ver más</button>
+          <a class="btn btn-primary" href="https://wa.me/5217440000000?text=Hola%20me%20interesa%20la%20AC-909" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+        <!-- Repite bloques de tarjetas para más propiedades -->
+      </div>
+      
+    </div>
+  </section>
+  
+
+  <!-- MODALES DE DETALLE ROTONDA-->
+  <div class="modal fade" id="m-101" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Villas Venado/Rotonda — ID AC-101</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-7">
+              <div id="carousel101" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded-3 overflow-hidden">
+                  <div class="carousel-item active">
+                    <img src="./Assets/casaRotonda.jpg" class="d-block w-100" alt="Foto 1">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./Assets/salaRotonda.jpg" class="d-block w-100" alt="Foto 2">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel101" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel101" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span></button>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <p>Casa estilo hacienda con hermoso jardín interior, asador y alberca privada disponible las 24 horas, además de chapoteadero ideal para los más pequeños. Disfruta de una vista espectacular al club de golf, a solo una cuadra de la playa.</p>
+              <ul class="list-unstyled small text-secondary">
+                <li>✔ 10 recámaras con AC (todas matrimoniales )</li>
+                <li>✔ 7 baños completos</li>
+                <li>✔ Estacionamiento 8 autos</li>
+                <li>✔ Cocina equipada</li>
+                 <li>✔ WIFI</li>
+              </ul>
+              <div class="d-flex gap-2">
+                <a class="btn btn-primary flex-fill" href="https://wa.me/5217440000000?text=Quiero%20cotizar%20AC-101%20(fecha%20de%20entrada%20/%20salida%20y%20n.%20de%20hu%C3%A9spedes)" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+                <a class="btn btn-outline-secondary flex-fill" href="#contacto">Enviar mensaje</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="m-202" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Villa Mar Dorada — ID AC-202</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Departamento con vista al mar, dentro de condominio con amenidades: albercas, camastros, palapa y acceso controlado.</p>
+          <ul class="list-unstyled small text-secondary">
+            <li>✔ 3 recámaras (1 king, 1 queen, 2 individuales)</li>
+            <li>✔ 2 baños completos</li>
+            <li>✔ Estacionamiento 1 auto</li>
+            <li>✔ Balcón con vista</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="m-303" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Casa Tradicional Centro — ID AC-303</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Casa cómoda a pasos del Zócalo y la Quebrada. Ideal para familias pequeñas o viajes de trabajo.</p>
+          <ul class="list-unstyled small text-secondary">
+            <li>✔ 2 recámaras (1 queen, 2 individuales)</li>
+            <li>✔ 1.5 baños</li>
+            <li>✔ Cocina equipada</li>
+            <li>✔ Wi‑Fi de alta velocidad</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section id="preguntas" class="py-5 bg-light border-top">
+    <div class="container">
+      <h2 class="mb-4">Preguntas frecuentes</h2>
+      <div class="accordion" id="faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true" aria-controls="a1">¿Cómo reservo?</button></h2>
+          <div id="a1" class="accordion-collapse collapse show" aria-labelledby="q1" data-bs-parent="#faq"><div class="accordion-body">Escríbenos por WhatsApp con las fechas, número de huéspedes y propiedad de interés. Te enviamos cotización y política de anticipo.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">¿Los precios cambian?</button></h2>
+          <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faq"><div class="accordion-body">Sí, varían por temporada, días de la semana y disponibilidad. Te confirmamos el precio final al momento de reservar.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">¿Facturan?</button></h2>
+          <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faq"><div class="accordion-body">Sí, con datos fiscales completos y pago por medios aceptados.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- CONTACTO -->
+<section id="contacto" class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <h2 class="mb-3">Contacto</h2>
+        <p class="text-secondary">¿Tienes fechas? Cuéntanos y te cotizamos hoy mismo.</p>
+        
+        <!-- FORMULARIO CON FORMSubmit -->
+        <form class="row g-3" action="https://formsubmit.co/yurguen.alain@gmail.com" method="POST">
+          <!-- 🔒 Opciones ocultas -->
+          <input type="hidden" name="_next" value="https://tusitio.com/gracias.html"> <!-- redirige a página de gracias -->
+          <input type="hidden" name="_captcha" value="false"> <!-- desactiva captcha -->
+          
+          <div class="col-md-6">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">WhatsApp</label>
+            <input type="tel" class="form-control" name="telefono"  required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Entrada</label>
+            <input type="date" class="form-control" name="entrada" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Salida</label>
+            <input type="date" class="form-control" name="salida" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Huéspedes</label>
+            <input type="number" class="form-control" name="huespedes" min="1" value="2" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Propiedad (ID)</label>
+            <input type="text" class="form-control" name="propiedad" placeholder="AC-101" />
+          </div>
+          <div class="col-12">
+            <label class="form-label">Mensaje</label>
+            <textarea class="form-control" name="mensaje" rows="3" placeholder="Hola, me interesa..."></textarea>
+          </div>
+          <div class="col-12 d-flex gap-2">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+            <a class="btn btn-outline-secondary" href="https://wa.me/message/GZDKGYJXHQZED1" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          </div>
+        </form>
+      </div>
+      
+      <div class="col-lg-6">
+        <h2 class="mb-3">Ubicación</h2>
+        <div class="ratio ratio-4x3 rounded-3 overflow-hidden shadow-sm">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.0176359696623!2d-99.86124112562963!3d16.858549083938394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ca59d562055b53%3A0x3bacb7fc99891059!2sDreams%20Acapulco%20ESPARZA%20(villas)!5e0!3m2!1ses-419!2smx!4v1726701256789!5m2!1ses-419!2smx"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <ul class="list-unstyled mt-3 text-secondary">
+          <li>📍 Acapulco, Gro.</li>
+          <li>📞 +52 744 000 0000</li>
+          <li>✉️ rentas@tu-dominio.mx</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <footer class="py-4 bg-dark text-white">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+      <div>© <span id="y"></span> Dreams Acapulco — Todos los derechos reservados.</div>
+      <div class="d-flex gap-3">
+        <a class="footer-link" href="#preguntas">Preguntas</a>
+        <a class="footer-link" href="#contacto">Contacto</a>
+        <a class="footer-link" href="#">Aviso de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón WhatsApp flotante -->
+  <a class="floating-whatsapp btn btn-success btn-lg rounded-circle shadow" href="https://wa.me/5217440000000" target="_blank" aria-label="WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- ICONS & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <script>
+    // Año del footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Data básica (puedes moverla a JSON o a tu backend)
+    const propiedades = [
+      { id:'AC-101', zona:'Zona Dorada', huespedes:50, precio:10500, titulo:'Villas Venado', keywords:'Villas Venado alberca privada jardin', },
+      { id:'AC-202', zona:'Dorada',   huespedes:20,  precio:5500, titulo:'Villas Misterio',      keywords:'vista mar costera', },
+      { id:'AC-303', zona:'Dorada', huespedes:25, precio:5500, titulo:'Villas La Rosa', keywords:'costera vista mar ',  },
+      { id:'AC-404', zona:'Dorada', huespedes:50, precio:10500, titulo:'Villas Roca Lounge', keywords:'costera oxxo', },
+      { id:'AC-505', zona:'Dorada', huespedes:50, precio:10500, titulo:'Villas Tabares', keywords:'alberca asador jardin', },
+      { id:'AC-606', zona:'Dorada', huespedes:30, precio:7500, titulo:'Villas La Esquinita', keywords:'alberca asador jardin', },
+      
+      
+      // Agrega más...
+    ];
+
+    // Filtros
+    const q = document.getElementById('q');
+    const selZona = document.getElementById('selZona');
+    const selH = document.getElementById('selHuespedes');
+    const selP = document.getElementById('selPrecio');
+    const btnLimpiar = document.getElementById('btnLimpiar');
+
+    function aplicaFiltros(){
+      const text = (q.value || '').toLowerCase();
+      const zona = selZona.value;
+      const h = parseInt(selH.value || 0, 10);
+      const p = parseInt(selP.value || 0, 10);
+
+      document.querySelectorAll('#grid .col-sm-6').forEach(col => {
+        const id = col.querySelector('.badge.text-bg-light').textContent.replace('ID: ','');
+        const prop = propiedades.find(x => x.id === id);
+        let ok = true;
+        if (text) ok = ok && ((prop.titulo + ' ' + prop.keywords + ' ' + prop.id).toLowerCase().includes(text));
+        if (zona) ok = ok && (prop.zona === zona);
+        if (h) ok = ok && (prop.huespedes >= (h === 16 ? 16 : h));
+        if (p){
+          if (p === 2500) ok = ok && prop.precio <= 2500;
+          else if (p === 4000) ok = ok && prop.precio > 2500 && prop.precio <= 4000;
+          else if (p === 8000) ok = ok && prop.precio > 4000 && prop.precio <= 8000;
+          else ok = ok && prop.precio > 8000;
+        }
+        col.style.display = ok ? '' : 'none';
+      });
+    }
+
+    [q, selZona, selH, selP].forEach(el => el.addEventListener('input', aplicaFiltros));
+    btnLimpiar.addEventListener('click', () => { q.value=''; selZona.value=''; selH.value=''; selP.value=''; aplicaFiltros(); });
+
+    // Simula envío de formulario (reemplaza por tu backend) 
+    function enviarFormulario(e){
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const tel = document.getElementById('telefono').value;
+      const entrada = document.getElementById('entrada').value;
+      const salida = document.getElementById('salida').value;
+      const huespedes = document.getElementById('huespedes').value;
+      const propiedad = document.getElementById('propiedad').value || 'General';
+      const mensaje = document.getElementById('mensaje').value;
+
+      const texto = encodeURIComponent(`Hola, soy ${nombre}. Fechas: ${entrada} a ${salida}. Huéspedes: ${huespedes}. Propiedad: ${propiedad}. ${mensaje}`);
+      window.open(`https://wa.me/5217440000000?text=${texto}`, '_blank');
+    }
+  </script>
+</body>
+</html>
